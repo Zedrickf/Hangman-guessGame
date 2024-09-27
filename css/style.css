@@ -1,0 +1,28 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--blueC);
+}
+
+.container {
+    text-align: center;
+}
+
+#word {
+    font-size: 2em;
+    letter-spacing: 0.1em;
+    margin: 20px 0;
+}
+
+#message {
+    margin: 20px 0;
+    color: red;
+}
+
+input {
+    font-size: 1.5em;
+    width: 50px;
+}
