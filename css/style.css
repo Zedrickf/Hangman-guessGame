@@ -6,22 +6,87 @@ body {
     height: 100vh;
     background-color: var(--blueC);
 }
-
+ 
 .container {
     text-align: center;
 }
-
+ 
+/*  CONTENEDOR DE PANTALLA 1  */
+.container__div {
+    width: 25rem;
+    display: flex;
+    justify-content: space-evenly;
+}
+ 
+.setup__inpt {
+    font-family: "SF Pro";
+    width: 130px;
+    padding: 0.875rem;
+    font-size: 1rem;
+    border: 1.5px solid #000;
+    border-radius: 0.5rem;
+    box-shadow: 0 3px 0 #000;
+    outline: none;
+    transition: ease 0.25s;
+}
+ 
+.setup__inpt:focus {
+    box-shadow: 0 7px 0 black;
+}
+ 
+/* estilos para boton de ambas pantallas */
+button {
+    font-size: 17px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    border-radius: var(--button_radius);
+    background: var(--button_outline_color);
+}
+ 
+#startGame {
+    transform: translateY(0.15rem);
+}
+ 
+.container__button {
+    display: block;
+    box-sizing: border-box;
+    border: 2px solid var(--button_outline_color);
+    border-radius: var(--button_radius);
+    padding: 0.75em 1.5em;
+    background: var(--button_color);
+    color: var(--button_outline_color);
+    transform: translateY(-0.2em);
+    transition: transform 0.1s ease;
+}
+ 
+button:hover .container__button {
+    transform: translateY(-0.33em);
+}
+ 
+button:active .container__button {
+    transform: translateY(0);
+}
+ 
+/*  CONTENEDOR DE PANTALLA 2  */
+/* estilos para el contenedor de la segunda pantalla */
+.container__div--second {
+    height: 17.5rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+ 
 #word {
     font-size: 2em;
     letter-spacing: 0.1em;
-    margin: 20px 0;
 }
-
+ 
 #message {
-    margin: 20px 0;
     color: red;
 }
-
+ 
 input {
     font-size: 1.5em;
     width: 50px;

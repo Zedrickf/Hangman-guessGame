@@ -4,25 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ahorcado</title>
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/global.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/global.css">
 </head>
 <body>
     <div class="container">
-        <h1>Juego del Ahorcado</h1>
-        <div id="setup">
-            <input type="text" id="wordInput" placeholder="Introduce la palabra" />
-            <button id="startGame">Iniciar Juego</button>
+        <h1 class="container__title" >Juego del Ahorcado</h1>
+ 
+        <!-- CONTENEDOR DE PANTALLA 1 -->
+        <div class="container__div" id="setup">
+            <input class="setup__inpt" type="text" id="wordInput" maxlength="15" placeholder="Introduce la palabra" />
+            <button type="button" id="startGame">
+                <span class="container__button">Iniciar Juego</span>  
+            </button>
         </div>
-        <div id="gameArea" style="display: none;">
+ 
+        <!-- CONTENEDOR DE PANTALLA 2 -->
+        <div class="container__div--second" id="gameArea" style="display: none;">
             <div id="word"></div>
-            <div id="message"></div>
+            <div id="message" style="display: none;"></div>
             <input type="text" id="guess" maxlength="1" placeholder="Introduce una letra">
-            <button id="submit">Adivinar</button>
+            <button type="button" id="submit">
+            <span class="container__button">Adivinar</span>
+            </button>
             <div id="attempts"></div>
-            <div id="guessedLetters"></div> <!-- Nueva sección para letras intentadas -->
+            <div id="guessedLetters"></div>
         </div>
     </div>
-    <script src="./js/app.js"></script>
+    <script src="/js/app.js"></script>
 </body>
 </html>
