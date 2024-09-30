@@ -2,6 +2,8 @@ let selectedWord = '';
 let attempts = 2;
 let guessedLetters = [];
 let correctLetters = [];
+const button = document.getElementById('changeC');
+let isInverted = false; // Estado para verificar si los colores están invertidos
  
 /*
 Se llama a la funcion "startGame" cuando el usuario da clic al boton
@@ -78,8 +80,34 @@ function makeGuess() {
     updateDisplay(); // Actualizar visualización después de procesar el intento
 }
  
+//Funcion para cambiar el color de la pagina cuando se da clic
+
  
 //Cuando el jugador hace clic en el botón de inicio (startGame), se llama a la función startGame.
 document.getElementById('startGame').addEventListener('click', startGame);
 //Cuando el jugador hace clic en el botón de enviar (submit), se llama a la función makeGuess
 document.getElementById('submit').addEventListener('click', makeGuess);
+
+button.addEventListener('click', () => {
+    const body = document.getElementById('bodyCode');
+    const containerDivs = document.querySelectorAll('.container__div, .container__div--second');
+    
+    if (!isInverted) {
+        body.style.backgroundColor = 'black';
+        body.style.color = 'white';
+        containerDivs.forEach(div => {
+            div.style.border = '1px solid white'; // Cambia el color del borde
+        });
+        button.style.backgroundColor = 'black'; // Cambia el color del botón
+        button.style.border = '4px solid white'; // Cambia el borde del botón
+    } else {
+        body.style.backgroundColor = 'var(--whiteC)';
+        body.style.color = 'var(--txtColor)';
+        containerDivs.forEach(div => {
+            div.style.border = '1px solid black'; // Regresa al color original
+        });
+        button.style.backgroundColor = 'var(--whiteC)'; // Regresa el color del botón
+        button.style.border = '4px solid var(--txtColor)'; // Regresa el borde del botón
+    }
+    isInverted = !isInverted; // Alternar el estado
+});
