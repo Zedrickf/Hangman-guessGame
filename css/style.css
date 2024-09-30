@@ -84,7 +84,7 @@ button:active .container__button {
 }
  
 #message {
-    color: red;
+    color: var(--greenC);
 }
  
 input {
