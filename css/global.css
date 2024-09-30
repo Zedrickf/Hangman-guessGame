@@ -1,10 +1,7 @@
 :root {
-    --whiteC: #fffdfd;
+    --whiteC: #f0f8ff;
     --txtColor: #2D2D34;
     --greenC: #B0DB43;
     --redC: #FF1F26;
-    --blueC: #0091AD;
     --button_radius: 0.75em;
-    --button_color: #e8e8e8;
-    --button_outline_color: #000000;
 }
