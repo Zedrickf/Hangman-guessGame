@@ -1,9 +1,12 @@
 let selectedWord = '';
-let attempts = 4;
+let attempts = 7;
 let guessedLetters = [];
 let correctLetters = [];
 const toggleModeButton = document.getElementById('changeC');
 const body = document.getElementById('bodyCode');
+// Array con los IDs de los elementos del ahorcado en el orden que se deben mostrar
+const hangmanParts = ['cuerda', 'cabeza', 'cuerpo', 'brazoD', 'brazoI', 'piernaD', 'piernaI'];
+let currentPartIndex = 0; // Índice para rastrear qué parte se debe mostrar
 
 
 /*
@@ -34,7 +37,7 @@ informacion en pantalla
 function initGame() {
     guessedLetters = [];
     correctLetters = [];
-    attempts = 4;
+    attempts = 7;
     updateDisplay();
 }
  
@@ -60,40 +63,44 @@ function makeGuess() {
     const container = document.querySelector('.container');
     
     if (guess && !guessedLetters.includes(guess)) {
-        guessedLetters.push(guess); // Agregar letra a las intentadas
-        updateDisplay(); // Actualizar visualización antes de procesar el intento
+        guessedLetters.push(guess);
+        updateDisplay();
 
         if (selectedWord.includes(guess)) {
             correctLetters.push(guess);
-            // Cambiar el borde a verde si acierta
             container.style.borderColor = 'var(--greenC)';
             if (selectedWord.split('').every(letter => correctLetters.includes(letter))) {
                 document.getElementById('message').style.display = 'block';
                 document.getElementById('message').style.color = 'var(--greenC)';
                 document.getElementById('message').innerText = '¡Ganaste!';
-                document.getElementById('submit').disabled = true; // Deshabilitar botón
+                document.getElementById('submit').disabled = true;
             }
         } else {
             attempts--;
-            // Cambiar el borde a rojo si falla
             container.style.borderColor = 'var(--redC)';
+
+            // Mostrar la siguiente parte del ahorcado en caso de fallo
+            if (currentPartIndex < hangmanParts.length) {
+                document.getElementById(hangmanParts[currentPartIndex]).style.display = 'block';
+                currentPartIndex++; // Incrementar el índice para la siguiente parte
+            }
+
             if (attempts === 0) {
                 document.getElementById('message').style.display = 'block';
                 document.getElementById('message').style.color = 'var(--redC)';
                 document.getElementById('message').innerText = `Perdiste. La palabra era: ${selectedWord}`;
                 document.getElementById('submit').style.cursor = 'not-allowed';
-                document.getElementById('submit').disabled = true; // Deshabilitar botón
+                document.getElementById('submit').disabled = true;
             }
         }
 
-        // Volver al color original después de un pequeño retraso
         setTimeout(() => {
             container.style.borderColor = 'var(--borderColor)';
         }, 700);
     }
 
     guessInput.value = '';
-    updateDisplay(); // Actualizar visualización después de procesar el intento
+    updateDisplay();
 }
  
 //Funcion para cambiar el color de la pagina cuando se da clic
