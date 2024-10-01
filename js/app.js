@@ -18,6 +18,9 @@ function startGame() {
     if (selectedWord) {
         document.getElementById('setup').style.display = 'none';
         document.getElementById('gameArea').style.display = 'flex';
+        document.getElementById('hangMan').style.display = 'inline-block';
+        document.getElementById('container__title').style.marginBottom = '1.5rem';
+        document.querySelector('.container').style.height = '45rem';
         initGame();
     } else {
         alert('Por favor, introduce una palabra válida.');
