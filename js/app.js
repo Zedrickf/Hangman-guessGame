@@ -31,7 +31,7 @@ informacion en pantalla
 function initGame() {
     guessedLetters = [];
     correctLetters = [];
-    attempts = 2;
+    attempts = 4;
     updateDisplay();
 }
  
@@ -54,13 +54,16 @@ actualizar la pantalla
 function makeGuess() {
     const guessInput = document.getElementById('guess');
     const guess = guessInput.value.toLowerCase();
- 
+    const container = document.querySelector('.container');
+    
     if (guess && !guessedLetters.includes(guess)) {
         guessedLetters.push(guess); // Agregar letra a las intentadas
         updateDisplay(); // Actualizar visualización antes de procesar el intento
- 
+
         if (selectedWord.includes(guess)) {
             correctLetters.push(guess);
+            // Cambiar el borde a verde si acierta
+            container.style.borderColor = 'var(--greenC)';
             if (selectedWord.split('').every(letter => correctLetters.includes(letter))) {
                 document.getElementById('message').style.display = 'block';
                 document.getElementById('message').style.color = 'var(--greenC)';
@@ -69,6 +72,8 @@ function makeGuess() {
             }
         } else {
             attempts--;
+            // Cambiar el borde a rojo si falla
+            container.style.borderColor = 'var(--redC)';
             if (attempts === 0) {
                 document.getElementById('message').style.display = 'block';
                 document.getElementById('message').style.color = 'var(--redC)';
@@ -77,8 +82,13 @@ function makeGuess() {
                 document.getElementById('submit').disabled = true; // Deshabilitar botón
             }
         }
+
+        // Volver al color original después de un pequeño retraso
+        setTimeout(() => {
+            container.style.borderColor = 'var(--borderColor)';
+        }, 700);
     }
- 
+
     guessInput.value = '';
     updateDisplay(); // Actualizar visualización después de procesar el intento
 }

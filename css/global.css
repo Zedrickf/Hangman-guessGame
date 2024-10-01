@@ -14,9 +14,9 @@
 .darkMode {
     --whiteC: #111113;
     --blackC: #f0f8ff;
-    --buttonBg: #ffffff; /* Fondo del botón en modo oscuro */
-    --buttonText: #000000; /* Texto del botón en modo oscuro */
-    --borderColor: #ffffff; /* Borde de elementos en modo oscuro */
+    --buttonBg: #ffffff; 
+    --buttonText: #000000; 
+    --borderColor: #ffffff; 
     --bttnChange: #000000;
     --txtChange: #ffffff;
 }
