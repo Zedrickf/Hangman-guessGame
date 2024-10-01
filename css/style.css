@@ -108,11 +108,91 @@ button:active .container__button {
     right: 40%;
     width: 18rem;
     background-color: var(--blackC);
-    padding: 2.5px;
+    padding: 3.5px;
     transform: rotate(90deg);
 }
 
+#bastonH {
+    position: absolute;
+    top: 4%;
+    right: 34%;
+    width: 10rem;
+    background-color: var(--blackC);
+    padding: 3.5px;
+}
 
+#cuerda {
+    position: absolute;
+    top: 15%;
+    right: 35%;
+    width: 4rem;
+    background-color: var(--blackC);
+    padding: 1.5px;
+    transform: rotate(90deg);
+}
+
+#cabeza {
+    position: absolute;
+    top: 13%;
+    right: 37%;
+    width: 3rem;
+    height: 3rem;
+    background-color: var(--whiteC);
+    border: 3.5px solid var(--blackC);
+    border-radius: 50%;
+}
+
+#cuerpo {
+    position: absolute;
+    top: 45%;
+    right: 29%;
+    width: 6rem;
+    background-color: var(--blackC);
+    padding: 1.5px;
+    transform: rotate(90deg); 
+}
+
+#brazoD {
+    position: absolute;
+    top: 43%;
+    right: 40%;
+    width: 4rem;
+    background-color: var(--blackC);
+    padding: 1.5px;
+    transform: rotate(115deg);
+}
+
+#brazoI {
+    position: absolute;
+    top: 42%;
+    right: 30%;
+    width: 4rem;
+    background-color: var(--blackC);
+    padding: 1.5px;
+    transform: rotate(-115deg);
+}
+
+
+#piernaD {
+    position: absolute;
+    top: 70%;
+    right: 40%;
+    width: 4rem;
+    background-color: var(--blackC);
+    padding: 1.5px;
+    transform: rotate(115deg);
+}
+
+
+#piernaI {
+    position: absolute;
+    top: 69%;
+    right: 30%;
+    width: 4rem;
+    background-color: var(--blackC);
+    padding: 1.5px;
+    transform: rotate(-115deg);
+}
  
 /*  CONTENEDOR DE PANTALLA 2  */
 /* estilos para el contenedor de la segunda pantalla */
