@@ -3,7 +3,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     background-color: var(--whiteC);
     color: var(--blackC);
     transition: all 0.2s;
@@ -14,6 +13,7 @@
     text-align: center;
     width: 55rem;
     height: 35rem;
+    margin: 50px;
     background-color: var(--whiteC);
     border: 4px solid var(--borderColor); /* Cambiar el borde según el modo */
     border-radius: 30px;
