@@ -1,10 +1,11 @@
 let selectedWord = '';
-let attempts = 2;
+let attempts = 4;
 let guessedLetters = [];
 let correctLetters = [];
-const button = document.getElementById('changeC');
-let isInverted = false; // Estado para verificar si los colores están invertidos
- 
+const toggleModeButton = document.getElementById('changeC');
+const body = document.getElementById('bodyCode');
+
+
 /*
 Se llama a la funcion "startGame" cuando el usuario da clic al boton
 "iniciar juego" luego de que el usuario escribe la palabra a adivinar
@@ -62,6 +63,7 @@ function makeGuess() {
             correctLetters.push(guess);
             if (selectedWord.split('').every(letter => correctLetters.includes(letter))) {
                 document.getElementById('message').style.display = 'block';
+                document.getElementById('message').style.color = 'var(--greenC)';
                 document.getElementById('message').innerText = '¡Ganaste!';
                 document.getElementById('submit').disabled = true; // Deshabilitar botón
             }
@@ -69,6 +71,7 @@ function makeGuess() {
             attempts--;
             if (attempts === 0) {
                 document.getElementById('message').style.display = 'block';
+                document.getElementById('message').style.color = 'var(--redC)';
                 document.getElementById('message').innerText = `Perdiste. La palabra era: ${selectedWord}`;
                 document.getElementById('submit').style.cursor = 'not-allowed';
                 document.getElementById('submit').disabled = true; // Deshabilitar botón
@@ -88,26 +91,10 @@ document.getElementById('startGame').addEventListener('click', startGame);
 //Cuando el jugador hace clic en el botón de enviar (submit), se llama a la función makeGuess
 document.getElementById('submit').addEventListener('click', makeGuess);
 
-button.addEventListener('click', () => {
-    const body = document.getElementById('bodyCode');
-    const containerDivs = document.querySelectorAll('.container__div, .container__div--second');
-    
-    if (!isInverted) {
-        body.style.backgroundColor = 'black';
-        body.style.color = 'white';
-        containerDivs.forEach(div => {
-            div.style.border = '1px solid white'; // Cambia el color del borde
-        });
-        button.style.backgroundColor = 'black'; // Cambia el color del botón
-        button.style.border = '4px solid white'; // Cambia el borde del botón
-    } else {
-        body.style.backgroundColor = 'var(--whiteC)';
-        body.style.color = 'var(--txtColor)';
-        containerDivs.forEach(div => {
-            div.style.border = '1px solid black'; // Regresa al color original
-        });
-        button.style.backgroundColor = 'var(--whiteC)'; // Regresa el color del botón
-        button.style.border = '4px solid var(--txtColor)'; // Regresa el borde del botón
-    }
-    isInverted = !isInverted; // Alternar el estado
+/*
+Cambia el color de varios elementos de la pagina cuando el boton es presionado
+*/
+toggleModeButton.addEventListener('click', () => {
+    body.classList.toggle('darkMode'); // Alterna entre modo claro y oscuro
 });
+

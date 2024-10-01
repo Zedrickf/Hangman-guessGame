@@ -5,7 +5,8 @@
     align-items: center;
     height: 100vh;
     background-color: var(--whiteC);
-    color: var(--txtColor);
+    color: var(--blackC);
+    transition: all 0.2s;
 }
  
 .container {
@@ -14,7 +15,7 @@
     width: 55rem;
     height: 35rem;
     background-color: var(--whiteC);
-    border: 4px solid black;
+    border: 4px solid var(--borderColor); /* Cambiar el borde según el modo */
     border-radius: 30px;
     display: flex;
     flex-direction: column;
@@ -30,20 +31,26 @@
     justify-content: space-evenly;
 }
  
-.setup__inpt {
+.setup__inpt, #guess {
     font-family: "SF Pro";
     width: 130px;
     padding: 0.875rem;
     font-size: 1rem;
-    border: 1.5px solid var(--txtColor);
+    border: 1.5px solid var(--borderColor); /* Borde variable */
     border-radius: 0.5rem;
-    box-shadow: 0 3px 0 var(--txtColor);
+    box-shadow: 0 3px 0 var(--borderColor);
     outline: none;
     transition: ease 0.25s;
+    background: var(--whiteC); /* Fondo variable */
+    color: var(--txtChange);
+}
+
+#guess {
+    width: 63px;
 }
  
-.setup__inpt:focus {
-    box-shadow: 0 7px 0 black;
+.setup__inpt:focus, #guess:focus {
+    box-shadow: 0 7px 0 var(--blackC);
 }
  
 /* estilos para boton de ambas pantallas */
@@ -53,8 +60,10 @@ button {
     border: none;
     cursor: pointer;
     padding: 0;
-    border-radius: var(--button_radius);
-    background: var(--txtColor);
+    border-radius: 0.75em;
+    background: var(--buttonBg); /* Fondo variable */
+    color: var(--buttonText); /* Texto variable */
+    transition: background-color 0.25s, color 0.25s;
 }
  
 #startGame {
@@ -64,11 +73,11 @@ button {
 .container__button {
     display: block;
     box-sizing: border-box;
-    border: 2px solid var(--txtColor);
-    border-radius: var(--button_radius);
+    border: 2px solid var(--blackC);
+    border-radius: 0.75em;
     padding: 0.75em 1.5em;
     background: var(--whiteC);
-    color: var(--txtColor);
+    color: var(--blackC);
     transform: translateY(-0.2em);
     transition: transform 0.1s ease;
 }
@@ -84,7 +93,7 @@ button:active .container__button {
 /*  CONTENEDOR DE PANTALLA 2  */
 /* estilos para el contenedor de la segunda pantalla */
 .container__div--second {
-    height: 17.5rem;
+    height: 20.5rem;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
@@ -96,7 +105,8 @@ button:active .container__button {
 }
  
 #message {
-    color: var(--greenC);
+    font-size: 2rem;
+    font-weight: 1000;
 }
  
 input {
@@ -108,8 +118,8 @@ input {
 #changeC {
     width: 50px;
     height: 50px;
-    background-color: var(--whiteC);
-    border: 4px solid var(--txtColor);
+    background-color: var(--bttnChange); /* Fondo del botón */
+    border: 4px solid var(--borderColor); /* Borde variable */
     border-radius: 50%;
     position: absolute;
     right: 30px;

@@ -1,7 +1,22 @@
 :root {
-    --whiteC: #f0f8ff;
-    --txtColor: #2D2D34;
-    --greenC: #B0DB43;
+    --whiteC: #ffffff;
+    --blackC: #000000;
+    --buttonBg: #000000;
+    --buttonText: #ffffff;
+    --borderColor: #000000;
+    --bttnChange: #ffffff;
+    --txtChange: #000000;
+    --greenC: #00AA32;
     --redC: #FF1F26;
-    --button_radius: 0.75em;
+}
+
+/* Modo oscuro */
+.darkMode {
+    --whiteC: #111113;
+    --blackC: #f0f8ff;
+    --buttonBg: #ffffff; /* Fondo del botón en modo oscuro */
+    --buttonText: #000000; /* Texto del botón en modo oscuro */
+    --borderColor: #ffffff; /* Borde de elementos en modo oscuro */
+    --bttnChange: #000000;
+    --txtChange: #ffffff;
 }
