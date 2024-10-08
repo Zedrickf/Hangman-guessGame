@@ -219,13 +219,23 @@ input {
 }
 
 /*  BOTON PARA CAMBIAR COLOR  */
-#changeC {
-    width: 50px;
-    height: 50px;
-    background-color: var(--bttnChange); /* Fondo del botón */
-    border: 4px solid var(--borderColor); /* Borde variable */
-    border-radius: 50%;
+.changeButton-container {
+    width: 7rem;
+    height: 3rem;
+    border: 4px solid var(--borderColor);
+    border-radius: 25px;
     position: absolute;
     right: 30px;
     bottom: 30px;
+}
+
+#changeC {
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: var(--bttnChange); /* Fondo del botón */
+    border: 4px solid var(--borderColor); /* Borde variable */
+    border-radius: 50%;
+    position: relative;
+    right: 32px;
+    top: 4px;
 }
