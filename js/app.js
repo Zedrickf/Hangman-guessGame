@@ -73,7 +73,8 @@ function makeGuess() {
                 document.getElementById('message').style.display = 'block';
                 document.getElementById('message').style.color = 'var(--greenC)';
                 document.getElementById('message').innerText = '¡Ganaste!';
-                document.getElementById('submit').disabled = true;
+                document.getElementById('submit').style.display = 'none';
+                document.getElementById('newGame').style.display = 'block';
             }
         } else {
             attempts--;
@@ -89,8 +90,8 @@ function makeGuess() {
                 document.getElementById('message').style.display = 'block';
                 document.getElementById('message').style.color = 'var(--redC)';
                 document.getElementById('message').innerText = `Perdiste. La palabra era: ${selectedWord}`;
-                document.getElementById('submit').style.cursor = 'not-allowed';
-                document.getElementById('submit').disabled = true;
+                document.getElementById('submit').style.display = 'none';
+                document.getElementById('newGame').style.display = 'block';
             }
         }
 
@@ -103,13 +104,26 @@ function makeGuess() {
     updateDisplay();
 }
  
-//Funcion para cambiar el color de la pagina cuando se da clic
+//funcion para iniciar nuevo juego al presionar el boton Iniciar juego
+function newGame() {
+    document.getElementById('setup').style.display = 'flex';
+    document.getElementById('gameArea').style.display = 'none';
+    document.getElementById('hangMan').style.display = 'none';
+    document.getElementById('container__title').style.marginBottom = '4rem';
+    document.querySelector('.container').style.height = '35rem';
+    const wordInput = document.getElementById('wordInput');
+    wordInput.value = '';
+    initGame();
+
+}
 
  
 //Cuando el jugador hace clic en el botón de inicio (startGame), se llama a la función startGame.
 document.getElementById('startGame').addEventListener('click', startGame);
 //Cuando el jugador hace clic en el botón de enviar (submit), se llama a la función makeGuess
 document.getElementById('submit').addEventListener('click', makeGuess);
+//Cuando el usuario hace clic en el boton de nuevo juego, llama a la funcion newGame
+document.getElementById('newGame').addEventListener('click', newGame);
 
 /*
 Cambia el color de varios elementos de la pagina cuando el boton es presionado
