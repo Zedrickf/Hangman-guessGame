@@ -4,10 +4,8 @@ let guessedLetters = [];
 let correctLetters = [];
 const toggleModeButton = document.getElementById('changeC');
 const body = document.getElementById('bodyCode');
-// Array con los IDs de los elementos del ahorcado en el orden que se deben mostrar
 const hangmanParts = ['cuerda', 'cabeza', 'cuerpo', 'brazoD', 'brazoI', 'piernaD', 'piernaI'];
-let currentPartIndex = 0; // Índice para rastrear qué parte se debe mostrar
-
+let currentPartIndex = 0;
 
 /*
 Se llama a la funcion "startGame" cuando el usuario da clic al boton
@@ -17,7 +15,7 @@ en el text area
 function startGame() {
     const wordInput = document.getElementById('wordInput');
     selectedWord = wordInput.value.toLowerCase().trim();
- 
+    
     if (selectedWord) {
         document.getElementById('setup').style.display = 'none';
         document.getElementById('gameArea').style.display = 'flex';
@@ -38,6 +36,7 @@ function initGame() {
     guessedLetters = [];
     correctLetters = [];
     attempts = 7;
+    resetGame();
     updateDisplay();
 }
  
@@ -80,10 +79,10 @@ function makeGuess() {
             attempts--;
             container.style.borderColor = 'var(--redC)';
 
-            // Mostrar la siguiente parte del ahorcado en caso de fallo
+            
             if (currentPartIndex < hangmanParts.length) {
                 document.getElementById(hangmanParts[currentPartIndex]).style.display = 'block';
-                currentPartIndex++; // Incrementar el índice para la siguiente parte
+                currentPartIndex++; 
             }
 
             if (attempts === 0) {
@@ -111,10 +110,29 @@ function newGame() {
     document.getElementById('hangMan').style.display = 'none';
     document.getElementById('container__title').style.marginBottom = '4rem';
     document.querySelector('.container').style.height = '35rem';
-    const wordInput = document.getElementById('wordInput');
-    wordInput.value = '';
-    initGame();
+    document.getElementById('submit').style.display = 'block';
+    document.getElementById('newGame').style.display = 'none';
+    
+    resetGame(); 
+}
 
+//funcion para reinciar los elementos a lo largo del codigo a su estado inicial
+function resetGame() {
+    // Ocultar todas las partes del ahorcado
+    hangmanParts.forEach(part => {
+        document.getElementById(part).style.display = 'none';
+    });
+
+    currentPartIndex = 0;
+    guessedLetters = [];
+    correctLetters = [];
+    attempts = 7;
+
+    // Limpiar la interfaz
+    document.getElementById('message').innerText = '';
+    document.getElementById('message').style.display = 'none';
+    document.getElementById('guess').value = '';
+    updateDisplay();
 }
 
  
