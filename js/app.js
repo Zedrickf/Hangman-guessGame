@@ -6,6 +6,8 @@ const toggleModeButton = document.getElementById('changeC');
 const body = document.getElementById('bodyCode');
 const hangmanParts = ['cuerda', 'cabeza', 'cuerpo', 'brazoD', 'brazoI', 'piernaD', 'piernaI'];
 let currentPartIndex = 0;
+const toggleButtonContainer = document.querySelector('.changeButton-container');
+const toggleButton = document.getElementById('changeC');
 
 /*
 Se llama a la funcion "startGame" cuando el usuario da clic al boton
@@ -135,6 +137,14 @@ function resetGame() {
     updateDisplay();
 }
 
+/*
+evento para mover el boton de izquierda a derecha para cambiar de claro a oscuro
+*/
+toggleModeButton.addEventListener('click', () => {
+    body.classList.toggle('darkMode'); // Alterna entre modo claro y oscuro
+    toggleButtonContainer.classList.toggle('active'); //mueve el boton de izquierda a derecha
+});
+
  
 //Cuando el jugador hace clic en el botón de inicio (startGame), se llama a la función startGame.
 document.getElementById('startGame').addEventListener('click', startGame);
@@ -142,11 +152,4 @@ document.getElementById('startGame').addEventListener('click', startGame);
 document.getElementById('submit').addEventListener('click', makeGuess);
 //Cuando el usuario hace clic en el boton de nuevo juego, llama a la funcion newGame
 document.getElementById('newGame').addEventListener('click', newGame);
-
-/*
-Cambia el color de varios elementos de la pagina cuando el boton es presionado
-*/
-toggleModeButton.addEventListener('click', () => {
-    body.classList.toggle('darkMode'); // Alterna entre modo claro y oscuro
-});
 
