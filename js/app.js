@@ -9,6 +9,19 @@ let currentPartIndex = 0;
 const toggleButtonContainer = document.querySelector('.changeButton-container');
 const toggleButton = document.getElementById('changeC');
 
+
+//ajustar el ancho de pantalla
+function ajustarHeight() {
+    const heightScreen = window.innerHeight; // Obtener la altura de la pantalla
+    if (heightScreen <= 430) { // Si la altura es menor o igual a 430px
+        document.querySelector('.container').style.height = '60rem';
+        console.log(window.innerHeight);
+    } else {
+        document.querySelector('.container').style.height = '45rem';
+        console.log(window.innerHeight);
+    }
+}
+
 /*
 Se llama a la funcion "startGame" cuando el usuario da clic al boton
 "iniciar juego" luego de que el usuario escribe la palabra a adivinar
@@ -23,7 +36,7 @@ function startGame() {
         document.getElementById('gameArea').style.display = 'flex';
         document.getElementById('hangMan').style.display = 'inline-block';
         document.getElementById('container__title').style.marginBottom = '1.5rem';
-        document.querySelector('.container').style.height = '45rem';
+        ajustarHeight();
         initGame();
     } else {
         alert('Por favor, introduce una palabra válida.');
@@ -114,6 +127,7 @@ function newGame() {
     document.querySelector('.container').style.height = '35rem';
     document.getElementById('submit').style.display = 'block';
     document.getElementById('newGame').style.display = 'none';
+    ajustarHeight();
     
     resetGame(); 
 }
@@ -153,10 +167,15 @@ toggleModeButton.addEventListener('click', () => {
 });
 
  
+// Llama a la función ajustarHeight cuando se redimensiona la ventana
+window.addEventListener('resize', ajustarHeight);
+
+// Llama a ajustarHeight al cargar la página por primera vez
+ajustarHeight();
+
 //Cuando el jugador hace clic en el botón de inicio (startGame), se llama a la función startGame.
 document.getElementById('startGame').addEventListener('click', startGame);
 //Cuando el jugador hace clic en el botón de enviar (submit), se llama a la función makeGuess
 document.getElementById('submit').addEventListener('click', makeGuess);
 //Cuando el usuario hace clic en el boton de nuevo juego, llama a la funcion newGame
 document.getElementById('newGame').addEventListener('click', newGame);
-

@@ -252,3 +252,17 @@ input {
     left: 8px;
 }
 
+/* Media query */
+
+@media screen and (max-width: 430px) {
+    
+    .container__div {
+        width: 23rem;
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+}
