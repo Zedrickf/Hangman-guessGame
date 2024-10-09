@@ -130,10 +130,9 @@ function resetGame() {
     correctLetters = [];
     attempts = 7;
 
-    // Limpiar la interfaz
     document.getElementById('message').innerText = '';
     document.getElementById('message').style.display = 'none';
-    document.getElementById('guess').value = '';
+    document.getElementById('wordInput').value = '';
     updateDisplay();
 }
 
