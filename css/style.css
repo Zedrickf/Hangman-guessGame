@@ -245,10 +245,10 @@ input {
     right: calc(100% - 8.8rem); 
 }
 
-.changeC__sun {
+.changeC__icon {
     width: 1rem;
     height: 1rem;
-    background-color: var(--blackC);
     position: relative;
     left: 8px;
 }
+

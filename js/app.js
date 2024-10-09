@@ -141,6 +141,14 @@ function resetGame() {
 evento para mover el boton de izquierda a derecha para cambiar de claro a oscuro
 */
 toggleModeButton.addEventListener('click', () => {
+    const toggleIcon = document.getElementById('changeC__icon');
+    
+    if (toggleIcon.src.includes('blackMoon.png')) {
+        toggleIcon.src = './img/whiteSun.png';
+    } else {
+        toggleIcon.src = './img/blackMoon.png';
+    }
+    
     body.classList.toggle('darkMode'); // Alterna entre modo claro y oscuro
     toggleButtonContainer.classList.toggle('active'); //mueve el boton de izquierda a derecha
 });
