@@ -15,8 +15,8 @@
     height: 35rem;
     margin: 50px;
     background-color: var(--whiteC);
-    border: 4px solid var(--borderColor); /* Cambiar el borde según el modo */
-    border-radius: 30px;
+    border: 2px solid var(--borderColor); /* Cambiar el borde según el modo */
+    box-shadow: 4px 4px var(--blackC);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -40,8 +40,7 @@
     padding: 0.875rem;
     font-size: 1rem;
     border: 1.5px solid var(--borderColor); /* Borde variable */
-    border-radius: 0.5rem;
-    box-shadow: 0 3px 0 var(--borderColor);
+    box-shadow: 4px 4px var(--borderColor);
     outline: none;
     transition: ease 0.25s;
     background: var(--whiteC); /* Fondo variable */
@@ -53,7 +52,7 @@
 }
  
 .setup__inpt:focus, #guess:focus {
-    box-shadow: 0 7px 0 var(--blackC);
+    box-shadow: 6px 6px var(--blackC);
 }
  
 /* estilos para boton de ambas pantallas */
@@ -63,34 +62,28 @@ button {
     border: none;
     cursor: pointer;
     padding: 0;
-    border-radius: 0.75em;
     background: var(--buttonBg); /* Fondo variable */
     color: var(--buttonText); /* Texto variable */
     transition: background-color 0.25s, color 0.25s;
 }
  
-#startGame {
-    transform: translateY(0.15rem);
-}
- 
 .container__button {
     display: block;
     box-sizing: border-box;
-    border: 2px solid var(--blackC);
-    border-radius: 0.75em;
+    border: 1px solid var(--blackC);
+    box-shadow: 4px 4px var(--blackC);
     padding: 0.75em 1.5em;
     background: var(--whiteC);
     color: var(--blackC);
-    transform: translateY(-0.2em);
-    transition: transform 0.1s ease;
+    transition: all 0.1s ease;
 }
- 
+
 button:hover .container__button {
-    transform: translateY(-0.33em);
+    box-shadow: 6px 6px var(--blackC);
 }
- 
+
 button:active .container__button {
-    transform: translateY(0);
+    box-shadow: 2px 2px var(--blackC);
 }
 
 /*  CONTENEDOR DE AHORCADO  */
@@ -223,7 +216,7 @@ input {
     width: 7rem;
     height: 3rem;
     border: 4px solid var(--borderColor);
-    border-radius: 25px;
+    border-radius: 10px;
     position: absolute;
     right: 30px;
     bottom: 30px;
@@ -234,7 +227,7 @@ input {
     height: 2.5rem;
     background-color: var(--bttnChange); /* Fondo del botón */
     border: 4px solid var(--borderColor); /* Borde variable */
-    border-radius: 50%;
+    border-radius: 20%;
     position: relative;
     top: 4px;
     right: 30px;

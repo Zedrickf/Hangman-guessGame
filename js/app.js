@@ -111,7 +111,7 @@ function makeGuess() {
 
         setTimeout(() => {
             container.style.borderColor = 'var(--borderColor)';
-        }, 700);
+        }, 900);
     }
 
     guessInput.value = '';
