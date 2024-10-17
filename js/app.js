@@ -170,20 +170,15 @@ toggleModeButton.addEventListener('click', () => {
     toggleButtonContainer.classList.toggle('active'); //mueve el boton de izquierda a derecha
 });
 
-// Llama a la función ajustarHeight cuando se redimensiona la ventana
-window.addEventListener('resize', ajustarHeight);
-
-// Llama a ajustarHeight al cargar la página por primera vez
-ajustarHeight();
-
-//Cuando el jugador hace clic en el botón de inicio (startGame), se llama a la función startGame.
-document.getElementById('startGame').addEventListener('click', startGame);
-//Cuando el jugador hace clic en el botón de enviar (submit), se llama a la función makeGuess
-document.getElementById('submit').addEventListener('click', makeGuess);
-//Cuando el usuario hace clic en el boton de nuevo juego, llama a la funcion newGame
-document.getElementById('newGame').addEventListener('click', newGame);
-
-/* === NUEVAS FUNCIONALIDADES: Compartir enlace y cargar palabra encriptada === */
+// Función para copiar el enlace al portapapeles
+function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(function() {
+        alert('Enlace copiado al portapapeles');
+    }, function(err) {
+        alert('No se pudo copiar el enlace');
+        console.error('Error al copiar al portapapeles:', err);
+    });
+}
 
 // Compartir la palabra encriptada
 document.getElementById('shareButton').addEventListener('click', function () {
@@ -193,7 +188,9 @@ document.getElementById('shareButton').addEventListener('click', function () {
     if (selectedWord) {
         const encryptedWord = encrypt(selectedWord);  // Encriptamos la palabra
         const url = `${window.location.href.split('?')[0]}?word=${encryptedWord}`;
-        alert(`Comparte este enlace: ${url}`);
+        
+        // Copiar el enlace al portapapeles
+        copyToClipboard(url);
     } else {
         alert('Por favor, introduce una palabra válida.');
     }
@@ -210,3 +207,17 @@ if (encryptedWord) {
     document.getElementById('container__title').style.marginBottom = '1.5rem';
     initGame();
 }
+
+// Llama a la función ajustarHeight cuando se redimensiona la ventana
+window.addEventListener('resize', ajustarHeight);
+
+// Llama a ajustarHeight al cargar la página por primera vez
+ajustarHeight();
+
+//Cuando el jugador hace clic en el botón de inicio (startGame), se llama a la función startGame.
+document.getElementById('startGame').addEventListener('click', startGame);
+//Cuando el jugador hace clic en el botón de enviar (submit), se llama a la función makeGuess
+document.getElementById('submit').addEventListener('click', makeGuess);
+//Cuando el usuario hace clic en el boton de nuevo juego, llama a la funcion newGame
+document.getElementById('newGame').addEventListener('click', newGame);
+
