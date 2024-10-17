@@ -247,7 +247,7 @@ input {
 
 /* Media query */
 
-@media screen and (max-width: 430px) {
+@media screen and (max-width: 630px) {
     
     .container__div {
         width: 23rem;

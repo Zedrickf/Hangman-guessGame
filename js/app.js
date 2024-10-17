@@ -12,13 +12,13 @@ const toggleButton = document.getElementById('changeC');
 
 //ajustar el ancho de pantalla
 function ajustarHeight() {
-    const heightScreen = window.innerHeight; // Obtener la altura de la pantalla
-    if (heightScreen <= 430) { // Si la altura es menor o igual a 430px
+    const heightScreen = window.innerWidth; // Obtener la altura de la pantalla
+    if (heightScreen <= 630) { // Si la altura es menor o igual a 430px
         document.querySelector('.container').style.height = '60rem';
-        console.log(window.innerHeight);
+        console.log(window.innerWidth);
     } else {
         document.querySelector('.container').style.height = '45rem';
-        console.log(window.innerHeight);
+        console.log(window.innerWidth);
     }
 }
 
