@@ -9,16 +9,22 @@ let currentPartIndex = 0;
 const toggleButtonContainer = document.querySelector('.changeButton-container');
 const toggleButton = document.getElementById('changeC');
 
+// Encriptar y desencriptar usando Base64
+function encrypt(word) {
+    return btoa(word); // Codifica en Base64
+}
 
-//ajustar el ancho de pantalla
+function decrypt(word) {
+    return atob(word); // Decodifica Base64
+}
+
+// Ajustar el ancho de pantalla
 function ajustarHeight() {
-    const heightScreen = window.innerWidth; // Obtener la altura de la pantalla
-    if (heightScreen <= 630) { // Si la altura es menor o igual a 430px
+    const heightScreen = window.innerWidth;
+    if (heightScreen <= 630) {
         document.querySelector('.container').style.height = '60rem';
-        console.log(window.innerWidth);
     } else {
         document.querySelector('.container').style.height = '45rem';
-        console.log(window.innerWidth);
     }
 }
 
@@ -42,7 +48,7 @@ function startGame() {
         alert('Por favor, introduce una palabra válida.');
     }
 }
- 
+
 /*
 Se llama esta funcion desde la funcion "startGame" para limpiar toda la
 informacion en pantalla
@@ -54,7 +60,7 @@ function initGame() {
     resetGame();
     updateDisplay();
 }
- 
+
 /*
 Se llama a esta funcion desde "initGame" para actualizar la informacion
 en pantalla con la nueva informacion luego de que se haga un intento
@@ -63,9 +69,9 @@ function updateDisplay() {
     const wordDisplay = selectedWord.split('').map(letter => (correctLetters.includes(letter) ? letter : '_')).join(' ');
     document.getElementById('word').innerText = wordDisplay;
     document.getElementById('attempts').innerText = `Intentos restantes: ${attempts}`;
-    document.getElementById('guessedLetters').innerText = `Letras intentadas: ${guessedLetters.join(', ')}`; // Mostrar letras intentadas
+    document.getElementById('guessedLetters').innerText = `Letras intentadas: ${guessedLetters.join(', ')}`;
 }
- 
+
 /*
 Cuando el jugador introduce una letra y hace clic en el botón de enviar,
 se ejecuta la función, y se llama a la funcion "updateDisplay" para
@@ -94,7 +100,6 @@ function makeGuess() {
             attempts--;
             container.style.borderColor = 'var(--redC)';
 
-            
             if (currentPartIndex < hangmanParts.length) {
                 document.getElementById(hangmanParts[currentPartIndex]).style.display = 'block';
                 currentPartIndex++; 
@@ -117,7 +122,7 @@ function makeGuess() {
     guessInput.value = '';
     updateDisplay();
 }
- 
+
 //funcion para iniciar nuevo juego al presionar el boton Iniciar juego
 function newGame() {
     document.getElementById('setup').style.display = 'flex';
@@ -134,7 +139,6 @@ function newGame() {
 
 //funcion para reinciar los elementos a lo largo del codigo a su estado inicial
 function resetGame() {
-    // Ocultar todas las partes del ahorcado
     hangmanParts.forEach(part => {
         document.getElementById(part).style.display = 'none';
     });
@@ -166,7 +170,6 @@ toggleModeButton.addEventListener('click', () => {
     toggleButtonContainer.classList.toggle('active'); //mueve el boton de izquierda a derecha
 });
 
- 
 // Llama a la función ajustarHeight cuando se redimensiona la ventana
 window.addEventListener('resize', ajustarHeight);
 
@@ -179,3 +182,31 @@ document.getElementById('startGame').addEventListener('click', startGame);
 document.getElementById('submit').addEventListener('click', makeGuess);
 //Cuando el usuario hace clic en el boton de nuevo juego, llama a la funcion newGame
 document.getElementById('newGame').addEventListener('click', newGame);
+
+/* === NUEVAS FUNCIONALIDADES: Compartir enlace y cargar palabra encriptada === */
+
+// Compartir la palabra encriptada
+document.getElementById('shareButton').addEventListener('click', function () {
+    const wordInput = document.getElementById('wordInput');
+    selectedWord = wordInput.value.toLowerCase().trim();  // Asignamos la palabra directamente del input
+    
+    if (selectedWord) {
+        const encryptedWord = encrypt(selectedWord);  // Encriptamos la palabra
+        const url = `${window.location.href.split('?')[0]}?word=${encryptedWord}`;
+        alert(`Comparte este enlace: ${url}`);
+    } else {
+        alert('Por favor, introduce una palabra válida.');
+    }
+});
+
+// Verificar si hay una palabra encriptada en la URL y cargarla
+const params = new URLSearchParams(window.location.search);
+const encryptedWord = params.get('word');
+if (encryptedWord) {
+    selectedWord = decrypt(encryptedWord);
+    document.getElementById('setup').style.display = 'none';
+    document.getElementById('gameArea').style.display = 'flex';
+    document.getElementById('hangMan').style.display = 'inline-block';
+    document.getElementById('container__title').style.marginBottom = '1.5rem';
+    initGame();
+}

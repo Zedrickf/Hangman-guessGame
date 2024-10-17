@@ -29,7 +29,7 @@
 
 /*  CONTENEDOR DE PANTALLA 1  */
 .container__div {
-    width: 25rem;
+    width: 35rem;
     display: flex;
     justify-content: space-evenly;
 }
@@ -215,8 +215,8 @@ input {
 .changeButton-container {
     width: 7rem;
     height: 3rem;
-    border: 4px solid var(--borderColor);
-    border-radius: 10px;
+    border: 2px solid var(--borderColor);
+    box-shadow: 4px 4px var(--blackC);
     position: absolute;
     right: 30px;
     bottom: 30px;
@@ -225,17 +225,20 @@ input {
 #changeC {
     width: 2.5rem;
     height: 2.5rem;
-    background-color: var(--bttnChange); /* Fondo del botón */
-    border: 4px solid var(--borderColor); /* Borde variable */
+    background-color: var(--bttnChange);
+    border: 2px solid var(--borderColor);
     border-radius: 20%;
     position: relative;
     top: 4px;
-    right: 30px;
+    left: 0.2rem;
     transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .changeButton-container.active #changeC {
-    right: calc(100% - 8.8rem); 
+    left: calc(100% - 2.8rem); 
 }
 
 .changeC__icon {
